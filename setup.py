@@ -14,9 +14,12 @@ setup(
     url="https://github.com/MarkHershey/python-utils",
     packages=find_packages(),
     classifiers=[
+        "Development Status :: 1 - Planning",
+        "Topic :: Utilities",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "Natural Language :: English",
     ],
     python_requires=">=3.6",
 )
