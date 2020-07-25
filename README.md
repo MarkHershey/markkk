@@ -22,9 +22,9 @@ pip install markkk
 *Example*:
 
 ```python
-import markkk.pyutils as utils
+from markkk.pyutils.check_text_encoding import replace_punc_for_file
 
-utils.replace_punc_for_file("test.txt")
+replace_punc_for_file("test.txt")
 ```
 
 ## License

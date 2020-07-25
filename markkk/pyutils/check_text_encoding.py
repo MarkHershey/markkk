@@ -19,7 +19,8 @@ def is_ascii(text: str) -> bool:
 
 def check_non_ascii_index(string: str) -> tuple:
     if not isinstance(string, str):
-        print(f"{type(string)} is not string.")
+        # print(f"{type(string)} is not string.")
+        raise TypeError(f"{type(string)} is not string.")
 
     if is_ascii(string):
         return None
