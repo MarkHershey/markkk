@@ -1,4 +1,4 @@
-# `markkk`
+# markkk
 
 Convenient Python utilities for personal usage
 
