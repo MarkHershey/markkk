@@ -1,6 +1,6 @@
 # `markkk`
 
-Python Convenient Utilities for Personal Usage
+Convenient Python utilities for personal usage
 
 ## Install
 
@@ -27,6 +27,6 @@ import markkk.pyutils as utils
 utils.replace_punc_for_file("test.txt")
 ```
 
-## License 
+## License
 
 - MIT

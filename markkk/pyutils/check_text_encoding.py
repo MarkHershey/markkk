@@ -97,6 +97,8 @@ def ensure_no_zh_punctuation(string: str) -> str:
         "～": "~",
         "《": "<",
         "》": ">",
+        "……": "...",
+        "…": "...",
     }
     new_string = ""
     for char in string:
