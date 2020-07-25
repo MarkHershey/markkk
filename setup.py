@@ -4,17 +4,17 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(
-    name="mark_pyutils",
+    name="markkk",
     version="0.0.1",
     author="Mark Huang",
     author_email="mark.h.huang@gmail.com",
-    description="Personal python utils",
+    description="Personal Package",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/MarkHershey/python-utils",
     packages=find_packages(),
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -23,3 +23,6 @@ setup(
     ],
     python_requires=">=3.6",
 )
+
+
+# Classifiers ref: https://pypi.org/classifiers/
