@@ -2,12 +2,7 @@ import unittest
 import sys
 from pathlib import Path
 
-# module = Path(__file__).parent.parent
-# print(module)
-#
-# sys.path.insert(0, module)
-
-from markkk.pyutils.check_text_encoding import *
+from markkk.pyutils import *
 
 
 class TestInvalidType(unittest.TestCase):
@@ -23,6 +18,17 @@ class TestInvalidType(unittest.TestCase):
 class TestSuccess(unittest.TestCase):
     def test_ensure_no_zh_punctuation(self):
         self.assertEqual(ensure_no_zh_punctuation(u"，。/；‘’【】"), ",./;''[]")
+
+    def test_is_ascii(self):
+        self.assertTrue(is_ascii(u"`1234567890-=`"))
+        self.assertTrue(is_ascii(u"~!@#$%^&*()_+"))
+        self.assertTrue(is_ascii(u"[]\;',./}{|:<>?"))
+        self.assertFalse(is_ascii(u"·"))
+        self.assertFalse(is_ascii(u"～"))
+        self.assertFalse(is_ascii(u"！"))
+        self.assertFalse(is_ascii(u"。"))
+        self.assertFalse(is_ascii(u"，"))
+        self.assertFalse(is_ascii(u"测试"))
 
 
 if __name__ == "__main__":

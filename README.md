@@ -22,11 +22,11 @@ pip install markkk
 *Example*:
 
 ```python
-from markkk.pyutils.check_text_encoding import replace_punc_for_file
+from markkk.pyutils import replace_punc_for_file
 
 replace_punc_for_file("test.txt")
 ```
 
 ## License
 
-- MIT
+- [MIT License]("LICENSE")
