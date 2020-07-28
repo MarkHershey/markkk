@@ -22,9 +22,44 @@ pip install markkk
 *Example*:
 
 ```python
-from markkk.pyutils import replace_punc_for_file
+from markkk.pyutils import *
 
 replace_punc_for_file("test.txt")
+is_ascii("。") # this returns false
+```
+
+
+
+## Development
+
+### Install package using local version
+*clone this repo*
+```bash
+git clone https://github.com/MarkHershey/python-utils.git
+```
+*go to project root*
+```bash
+cd python-utils
+```
+
+*create virtual env for this project*
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip setuptools  wheel
+pip install -r requirements.txt
+```
+
+*install this package in editable mode*
+```bash
+pip install -e .[dev]
+```
+
+### Run Unittest
+
+*at project root*
+```bash
+tox
 ```
 
 ## License

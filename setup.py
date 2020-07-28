@@ -19,6 +19,8 @@ setup(
     url="https://github.com/MarkHershey/python-utils",
     package_dir=({"": "src"}),
     packages=find_packages(where="src"),
+    install_requires=[""],
+    extras_require={"dev": ["pytest", "tox"]},
     # Classifiers ref: https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 3 - Alpha",

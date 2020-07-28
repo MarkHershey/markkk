@@ -4,18 +4,20 @@
 2. Generate a PyPi token
 3. Build
 ```
+check-manifest --create
+```
+```
 python setup.py sdist bdist_wheel
 ```
 4. Install `twine`
 ```
 pip install twine
 ```
-4. Upload
+5. Upload to test PyPi
+```
+twine upload --repository testpypi dist/*
+```
+6. Upload to PyPi
 ```
 python -m twine upload dist/*
-```
-
-
-```
-check-manifest --create
 ```
