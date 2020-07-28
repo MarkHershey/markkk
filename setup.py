@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 MAJOR = 0
 MINOR = 0
-MICRO = 4
+MICRO = 5
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
 
 with open("README.md", "r") as f:
@@ -19,8 +19,8 @@ setup(
     url="https://github.com/MarkHershey/python-utils",
     package_dir=({"": "src"}),
     packages=find_packages(where="src"),
-    install_requires=[""],
-    extras_require={"dev": ["pytest", "tox"]},
+    install_requires=["colorlog>=4.1.0"],
+    extras_require={"dev": ["pytest", "tox", "wheel"]},
     # Classifiers ref: https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 3 - Alpha",
