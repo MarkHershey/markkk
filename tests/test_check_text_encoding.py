@@ -17,7 +17,39 @@ class TestInvalidType(unittest.TestCase):
 
 class TestSuccess(unittest.TestCase):
     def test_ensure_no_zh_punctuation(self):
-        self.assertEqual(ensure_no_zh_punctuation(u"，。/；‘’【】"), ",./;''[]")
+        before = u"，。：；"
+        after = ",.:;"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"《》/？！"
+        after = "<>/?!"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"‘’"
+        after = "''"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"“”"
+        after = '""'
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"【】「」"
+        after = "[]{}"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"、｜"
+        after = ",|"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"=+"
+        after = "=+"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"——"
+        after = "--"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"（）"
+        after = "()"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"……"
+        after = "......"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
+        before = u"～·"
+        after = "~-"
+        self.assertEqual(ensure_no_zh_punctuation(before), after)
 
     def test_is_ascii(self):
         self.assertTrue(is_ascii(u"`1234567890-=`"))

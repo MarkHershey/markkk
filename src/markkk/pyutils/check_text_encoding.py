@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from typing import List, Tuple
 
 
 def is_ascii(text: str) -> bool:
@@ -17,7 +18,24 @@ def is_ascii(text: str) -> bool:
     return True
 
 
-def check_non_ascii_index(string: str) -> tuple:
+def check_non_ascii_index(string: str) -> Tuple[int]:
+    if not isinstance(string, str):
+        # print(f"{type(string)} is not string.")
+        raise TypeError(f"{type(string)} is not string.")
+
+    if is_ascii(string):
+        return None
+
+    index_list: List[str] = []
+
+    for index, char in enumerate(string):
+        if ord(char) >= 128:
+            index_list.append(index + 1)
+
+    return tuple(index_list)
+
+
+def check_non_ascii_char(string: str) -> Tuple[str]:
     if not isinstance(string, str):
         # print(f"{type(string)} is not string.")
         raise TypeError(f"{type(string)} is not string.")
@@ -29,7 +47,7 @@ def check_non_ascii_index(string: str) -> tuple:
 
     for index, char in enumerate(string):
         if ord(char) >= 128:
-            index_list.append(index + 1)
+            index_list.append(f"{index + 1}: {char}")
 
     return tuple(index_list)
 
@@ -53,7 +71,7 @@ def check_file_by_line(filepath: str):
         print("OK")
         return
     else:
-        print("NO, following lines contain non-ascii characters.")
+        print("\nFollowing lines contain non-ascii characters:\n")
 
     with filepath.open(encoding="utf-8") as f:
         lines = f.readlines()
@@ -61,9 +79,9 @@ def check_file_by_line(filepath: str):
     for index, line in enumerate(lines):
         line_number = index + 1
         if not is_ascii(line):
-            print(
-                f"At line {line_number}, Non-ascii char location: {check_non_ascii_index(line)}"
-            )
+            print(f"{line_number}: {check_non_ascii_char(line)}")
+
+    print("---END---\n")
 
 
 def ensure_no_zh_punctuation(string: str) -> str:
@@ -93,8 +111,7 @@ def ensure_no_zh_punctuation(string: str) -> str:
         "「": "{",
         "」": "}",
         "｜": "|",
-        "-": "-",
-        "——": "--",
+        "—": "-",  # ord = 8212
         "（": "(",
         "）": ")",
         "～": "~",
@@ -112,7 +129,7 @@ def ensure_no_zh_punctuation(string: str) -> str:
     return new_string
 
 
-def replace_punc_for_file(filepath: str):
+def replace_punc_for_file(filepath: str) -> Path:
     filepath = Path(filepath)
     assert filepath.is_file()
     filepath = filepath.resolve()
@@ -129,6 +146,8 @@ def replace_punc_for_file(filepath: str):
     with filepath_new.open(mode="w", encoding="utf-8") as f:
         f.write(content_new)
         print(f"Successfully exported: {filepath_new}")
+
+    return filepath_new
 
 
 if __name__ == "__main__":
