@@ -1,20 +1,33 @@
+import os
 import logging
 import colorlog
+from pathlib import Path
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-fh1 = logging.FileHandler("log_debug.log", mode="a")
+log_dir = Path("logs/")
+
+if not log_dir.is_dir():
+    os.mkdir(log_dir)
+
+debug_log_fp = log_dir / "debug.log"
+error_log_fp = log_dir / "error.log"
+
+fh1 = logging.FileHandler(debug_log_fp, mode="a")
 fh1.setLevel(logging.DEBUG)
-fh2 = logging.FileHandler("log_error.log", mode="a")
+fh2 = logging.FileHandler(error_log_fp, mode="a")
 fh2.setLevel(logging.ERROR)
 sh = colorlog.StreamHandler()
 sh.setLevel(logging.DEBUG)
 
 # Define formatters
-formatter = logging.Formatter("%(asctime)s - %(levelname)-8s - %(message)s")
+formatter = logging.Formatter(
+    fmt="%(asctime)s - %(levelname)-8s | %(filename)s:%(lineno)s | %(message)s ",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 color_formatter = colorlog.ColoredFormatter(
-    "%(log_color)s%(levelname)-8s%(reset)s %(log_color)s%(message)s",
+    fmt="%(log_color)s%(levelname)-8s%(reset)s %(log_color)s%(message)s %(black)s(%(filename)s:%(lineno)s)",
     datefmt=None,
     reset=True,
     log_colors={
