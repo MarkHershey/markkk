@@ -1,16 +1,38 @@
-# markkk
+# Python Package: markkk
 
 Convenient Python utilities for personal usage
+
 
 ## Install
 
 ```bash
-pip install markkk
+pip install --upgrade markkk
 ```
 
 ## Usage
 
-### sub-module: check_text_encoding
+### Generic Colored Logger
+
+This is a pre-configured logger using python's built-in `logging` module and a formatter [`colorlog`](https://github.com/borntyping/python-colorlog). It is easy to use, simplest setup on earth, suitable for personal day-to-day debugging, personal small-scale projects.
+
+```python
+from markkk.logger import logger
+
+logger.debug("This is a debug message")
+logger.info("This is a message for your information")
+logger.warning("This is a warning message")
+logger.error("This is an error message")
+logger.critical("This is a critical error message")
+
+```
+
+The logger has three logging handlers:
+1. log to file `log_debug.log` which captures all logs with timestamp.
+2. log to file `log_error.log` which captures error & critical logs with timestamp.
+3. log to console with colors for different logging levels.
+
+
+### Sub-module: `check_text_encoding`
 
 - `is_ascii`
 - `check_non_ascii_index`

@@ -54,7 +54,7 @@ class TestSuccess(unittest.TestCase):
     def test_is_ascii(self):
         self.assertTrue(is_ascii(u"`1234567890-=`"))
         self.assertTrue(is_ascii(u"~!@#$%^&*()_+"))
-        self.assertTrue(is_ascii(u"[]\;',./}{|:<>?"))
+        self.assertTrue(is_ascii(u"[]\\;',./}{|:<>?"))
         self.assertFalse(is_ascii(u"·"))
         self.assertFalse(is_ascii(u"～"))
         self.assertFalse(is_ascii(u"！"))
