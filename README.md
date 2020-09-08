@@ -27,8 +27,8 @@ logger.critical("This is a critical error message")
 ```
 
 The logger has three logging handlers:
-1. log to file `log_debug.log` which captures all logs with timestamp.
-2. log to file `log_error.log` which captures error & critical logs with timestamp.
+1. log to file `logs/debug.log` which captures all logs with timestamp.
+2. log to file `logs/error.log` which captures error & critical logs with timestamp.
 3. log to console with colors for different logging levels.
 
 
@@ -61,7 +61,7 @@ git clone https://github.com/MarkHershey/python-utils.git
 ```
 *go to project root*
 ```bash
-cd python-utils
+cd markkk
 ```
 
 *create virtual env for this project*
