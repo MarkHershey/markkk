@@ -15,6 +15,17 @@ pip install --upgrade markkk
 
 This is a pre-configured logger using python's built-in `logging` module and a formatter [`colorlog`](https://github.com/borntyping/python-colorlog). It is easy to use, simplest setup on earth, suitable for personal day-to-day debugging, personal small-scale projects.
 
+The logger has three logging handlers:
+1. log to file `logs/debug.log` which captures **all** logs with timestamp.
+2. log to file `logs/error.log` which captures **error & critical** logs with timestamp.
+3. log to console **with colors** for different logging levels.
+
+Note:
+- A new folder named `logs` will be created at the current working directory if not already exist.
+- `debug.log` & `error.log` file will also be created if not already present under `logs`.
+
+Example:
+
 ```python
 from markkk.logger import logger
 
@@ -26,10 +37,7 @@ logger.critical("This is a critical error message")
 
 ```
 
-The logger has three logging handlers:
-1. log to file `logs/debug.log` which captures all logs with timestamp.
-2. log to file `logs/error.log` which captures error & critical logs with timestamp.
-3. log to console with colors for different logging levels.
+![colored_log_in_console](docs/c_logger.png)
 
 
 ### Sub-module: `check_text_encoding`
