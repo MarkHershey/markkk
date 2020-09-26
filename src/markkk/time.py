@@ -1,5 +1,6 @@
 import time
 
+
 def timeit(func):
     def wrapped_function(*args, **kwargs):
         start_time = time.time()
@@ -10,7 +11,9 @@ def timeit(func):
             return elapsed, result
         else:
             return elapsed
+
     return wrapped_function
+
 
 def timeitprint(func):
     def wrapped_function(*args, **kwargs):
@@ -28,19 +31,34 @@ def timeitprint(func):
         seconds = round(time_elapsed, 3)
         func_name = func.__name__
         if hours:
-            print("====== Func '{}' finished in {} hrs, {} mins, {} secs ======\n".format(func_name, hours, minutes, int(seconds)))
+            print(
+                "====== Func '{}' finished in {} hrs, {} mins, {} secs ======\n".format(
+                    func_name, hours, minutes, int(seconds)
+                )
+            )
         elif minutes:
-            print("====== Func '{}' finished in {} mins, {:.2f} secs ======\n".format(func_name, minutes, seconds))
+            print(
+                "====== Func '{}' finished in {} mins, {:.2f} secs ======\n".format(
+                    func_name, minutes, seconds
+                )
+            )
         else:
-            print("====== Func <'{}'> finished in {:.6f} secs ======\n".format(func_name, seconds))
+            print(
+                "====== Func <'{}'> finished in {:.6f} secs ======\n".format(
+                    func_name, seconds
+                )
+            )
 
         if result:
             return result
         else:
             return
+
     return wrapped_function
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
+
     @timeitprint
     def tictok():
         a = 1000000
