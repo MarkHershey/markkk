@@ -85,7 +85,7 @@ def check_file_by_line(filepath: str):
 
 
 def ensure_no_zh_punctuation(string: str) -> str:
-    """ Convert common Chinese (zh) punctuation (Unicode) to
+    """Convert common Chinese (zh) punctuation (Unicode) to
     corresponding English (en-us) punctuation (ascii).
     """
     if not isinstance(string, str):
