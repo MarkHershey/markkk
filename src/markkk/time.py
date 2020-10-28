@@ -6,11 +6,7 @@ def timeit(func):
         start_time = time.time()
         result = func(*args, **kwargs)
         elapsed = time.time() - start_time
-
-        if result:
-            return elapsed, result
-        else:
-            return elapsed
+        return elapsed, result
 
     return wrapped_function
 
@@ -49,10 +45,7 @@ def timeitprint(func):
                 )
             )
 
-        if result:
-            return result
-        else:
-            return
+        return result
 
     return wrapped_function
 
