@@ -11,7 +11,7 @@ pip install --upgrade markkk
 
 ## Usage
 
-### Generic Colored Logger
+### Sub-module: `logger`
 
 This is a pre-configured logger using python's built-in `logging` module and a formatter [`colorlog`](https://github.com/borntyping/python-colorlog). It is easy to use, simplest setup on earth, suitable for personal day-to-day debugging, personal small-scale projects.
 
@@ -24,7 +24,7 @@ Note:
 - A new folder named `logs` will be created at the current working directory if not already exist.
 - `debug.log` & `error.log` file will also be created if not already present under `logs`.
 
-Example:
+*Example*:
 
 ```python
 from markkk.logger import logger
@@ -39,8 +39,41 @@ logger.critical("This is a critical error message")
 
 ![colored_log_in_console](docs/c_logger.png)
 
+### Sub-module: `time`
 
-### Sub-module: `check_text_encoding`
+- `timeit` (this is a decorator for your function)
+- `timeitprint` (this is a decorator for your function)
+
+*Example*:
+
+```python
+from markkk.time import timeitprint
+
+@timeitprint
+def tictok():
+    a = 1000000
+    for i in range(10000000):
+        a -= 1
+        b = a
+    return
+
+if __name__ == "__main__":
+    tictok()
+```
+
+*Console output*:
+
+```
+====== Func 'tictok' finished in 0.3280000000 secs ======
+```
+
+### Sub-module: `file`
+
+- `safe_rename`
+- `safe_copy`
+- `safe_move`
+
+### Sub-module: `encoding`
 
 - `is_ascii`
 - `check_non_ascii_index`
@@ -52,7 +85,7 @@ logger.critical("This is a critical error message")
 *Example*:
 
 ```python
-from markkk.pyutils import *
+from markkk.encoding import replace_punc_for_file, is_ascii
 
 replace_punc_for_file("test.txt")
 is_ascii("。") # this returns false

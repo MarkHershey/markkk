@@ -23,7 +23,7 @@ def timeitprint(func):
             time_elapsed = time_elapsed - hours * 3600
         if time_elapsed >= 60:
             minutes = int(time_elapsed // 60)
-            time_elapsed = time_elapsed - hours * 60
+            time_elapsed = time_elapsed - minutes * 60
         seconds = round(time_elapsed, 3)
         func_name = func.__name__
         if hours:
@@ -40,7 +40,7 @@ def timeitprint(func):
             )
         else:
             print(
-                "====== Func <'{}'> finished in {:.6f} secs ======\n".format(
+                "====== Func '{}' finished in {:.10f} secs ======\n".format(
                     func_name, seconds
                 )
             )

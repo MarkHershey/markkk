@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 MAJOR = 0
 MINOR = 0
-MICRO = 14
+MICRO = 15
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
 
 with open("README.md", "r") as f:
@@ -16,7 +16,7 @@ setup(
     description="Python convenient utilities for personal usage",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/MarkHershey/python-utils",
+    url="https://github.com/MarkHershey/markkk",
     package_dir=({"": "src"}),
     packages=find_packages(where="src"),
     install_requires=["colorlog>=4.1.0"],
