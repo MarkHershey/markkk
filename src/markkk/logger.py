@@ -1,7 +1,8 @@
-import os
 import logging
-import colorlog
+import os
 from pathlib import Path
+
+import colorlog
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)

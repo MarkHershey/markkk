@@ -13,11 +13,8 @@ python setup.py sdist bdist_wheel
 ```
 pip install twine
 ```
-5. Upload to test PyPi
-```
-twine upload --repository testpypi dist/*
-```
-6. Upload to PyPi
+
+5. Upload to PyPi
 ```
 python -m twine upload dist/*
 ```

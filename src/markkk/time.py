@@ -1,7 +1,9 @@
 import time
+from datetime import datetime
+from typing import Callable
 
 
-def timeit(func):
+def timeit(func: Callable) -> Callable:
     def wrapped_function(*args, **kwargs):
         start_time = time.time()
         result = func(*args, **kwargs)
@@ -11,7 +13,7 @@ def timeit(func):
     return wrapped_function
 
 
-def timeitprint(func):
+def timeitprint(func: Callable) -> Callable:
     def wrapped_function(*args, **kwargs):
         time_start = time.time()
         result = func(*args, **kwargs)
@@ -26,6 +28,7 @@ def timeitprint(func):
             time_elapsed = time_elapsed - minutes * 60
         seconds = round(time_elapsed, 3)
         func_name = func.__name__
+
         if hours:
             print(
                 "====== Func '{}' finished in {} hrs, {} mins, {} secs ======\n".format(
@@ -50,6 +53,32 @@ def timeitprint(func):
     return wrapped_function
 
 
+def timestamp_seconds() -> str:
+    """
+    Return a timestamp in 15-char string format: {YYYYMMDD}'T'{HHMMSS}
+    """
+    now = str(datetime.now().isoformat(sep="T", timespec="seconds"))
+    ts: str = ""
+    for i in now:
+        if i not in (" ", "-", ":"):
+            ts += i
+    return ts
+
+
+def timestamp_microseconds() -> str:
+    """
+    Return a timestamp in 22-char string format: YYYYMMDD-HHMMSS-microseconds
+    """
+    now = str(datetime.now().isoformat(sep="T", timespec="microseconds"))
+    ts: str = ""
+    for i in now:
+        if i in ("T", "."):
+            ts += "-"
+        elif i not in (" ", ":", "-"):
+            ts += i
+    return ts
+
+
 if __name__ == "__main__":
 
     @timeitprint
@@ -61,3 +90,5 @@ if __name__ == "__main__":
         return
 
     tictok()
+    print(timestamp_seconds())
+    print(timestamp_microseconds())
