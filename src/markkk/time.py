@@ -82,7 +82,7 @@ def timestamp_microseconds() -> str:
 if __name__ == "__main__":
 
     @timeitprint
-    def tictok():
+    def tictok() -> None:
         a = 1000000
         for i in range(10000000):
             a -= 1

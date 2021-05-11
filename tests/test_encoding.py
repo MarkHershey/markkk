@@ -2,10 +2,34 @@ import sys
 import unittest
 from pathlib import Path
 
-from markkk.pyutils import *
+project_root_dir = Path(__file__).resolve().parent.parent
+src_dir = project_root_dir / "src/markkk"
+res_dir = project_root_dir / "tests/resources"
+
+sys.path.insert(0, str(src_dir))
+
+from encoding import (
+    check_file_by_line,
+    check_non_ascii_char,
+    check_non_ascii_index,
+    ensure_no_zh_punctuation,
+    is_ascii,
+    is_ascii_only_file,
+    replace_punc_for_file,
+)
 
 
-class TestInvalidType(unittest.TestCase):
+class TestEncoding(unittest.TestCase):
+    def test_check_file_by_line(self):
+        test_fp = res_dir / "test.txt"
+        check_file_by_line(test_fp)
+
+    def test_check_non_ascii_char(self):
+        result = check_non_ascii_char("fjashdfisahdfoisafieiowhfioash")
+        self.assertEqual(result, None)
+        result = check_non_ascii_char("123456789。")
+        self.assertTrue(isinstance(result, tuple))
+
     def test_is_ascii(self):
         with self.assertRaises(Exception):
             is_ascii(100)
@@ -14,8 +38,6 @@ class TestInvalidType(unittest.TestCase):
         with self.assertRaises(TypeError):
             check_non_ascii_index(100)
 
-
-class TestSuccess(unittest.TestCase):
     def test_ensure_no_zh_punctuation(self):
         before = u"，。：；"
         after = ",.:;"
@@ -61,6 +83,15 @@ class TestSuccess(unittest.TestCase):
         self.assertFalse(is_ascii(u"。"))
         self.assertFalse(is_ascii(u"，"))
         self.assertFalse(is_ascii(u"测试"))
+
+    def test_is_ascii_only_file(self):
+        test_fp = res_dir / "test.txt"
+        self.assertFalse(is_ascii_only_file(test_fp))
+
+    def test_replace_punc_for_file(self):
+        test_fp = res_dir / "test.txt"
+        new_fp = replace_punc_for_file(test_fp)
+        self.assertTrue(is_ascii_only_file(new_fp))
 
 
 if __name__ == "__main__":

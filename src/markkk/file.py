@@ -4,12 +4,12 @@ import shutil
 import subprocess
 from multiprocessing import Pool
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
-from .logger import loggers
+from .logger import logger
 
 
-def safe_rename(src: str, dest: str):
+def safe_rename(src: str, dest: str) -> None:
     """
     safety checks:
         1. check if source exists before rename
@@ -36,7 +36,7 @@ def safe_rename(src: str, dest: str):
         logger.error(f"Rename operation failed, reason: {err}")
 
 
-def safe_copy(src: str, dest: str):
+def safe_copy(src: str, dest: str) -> None:
     """
     safety checks:
         1. check if source exists before copy
@@ -64,7 +64,7 @@ def safe_copy(src: str, dest: str):
         logger.error(f"Copy operation failed, reason: {err}")
 
 
-def safe_move(src: str, dest: str):
+def safe_move(src: str, dest: str) -> None:
     """
     safety checks:
         1. check if source exists before move
@@ -100,7 +100,7 @@ class MassCopier:
     def __init__(self):
         self.copy_jobs: List[MassCopier.CopyJob] = []
 
-    def add(self, src: str, dst: str):
+    def add(self, src: str, dst: str) -> None:
         src = Path(src)
         if not src.exists():
             logger.error(f"Source file '{src}' not found.")
@@ -120,7 +120,7 @@ class MassCopier:
         self.copy_jobs.append((src, dst))
 
     @staticmethod
-    def make_copy(copy_job: CopyJob):
+    def make_copy(copy_job: CopyJob) -> Union[str, CopyJob]:
         src, dst = copy_job
 
         if MassCopier.large_files:
@@ -160,7 +160,7 @@ class MassCopier:
         verbose: bool = True,
         overwrite: bool = False,
         large_files: bool = False,
-    ):
+    ) -> None:
         MassCopier.verbose = verbose
         MassCopier.overwrite = overwrite
         MassCopier.large_files = large_files

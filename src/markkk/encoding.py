@@ -63,7 +63,7 @@ def is_ascii_only_file(filepath: str) -> bool:
     return is_ascii(text)
 
 
-def check_file_by_line(filepath: str):
+def check_file_by_line(filepath: str) -> None:
     filepath = Path(filepath)
     assert filepath.is_file()
 

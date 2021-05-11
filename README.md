@@ -2,7 +2,6 @@
 
 Convenient Python utilities for personal usage
 
-
 ## Install
 
 ```bash
@@ -16,15 +15,17 @@ pip install --upgrade markkk
 This is a pre-configured logger using python's built-in `logging` module and a formatter [`colorlog`](https://github.com/borntyping/python-colorlog). It is easy to use, simplest setup on earth, suitable for personal day-to-day debugging, personal small-scale projects.
 
 The logger has three logging handlers:
+
 1. log to file `logs/debug.log` which captures **all** logs with timestamp.
 2. log to file `logs/error.log` which captures **error & critical** logs with timestamp.
 3. log to console **with colors** for different logging levels.
 
 Note:
-- A new folder named `logs` will be created at the current working directory if not already exist.
-- `debug.log` & `error.log` file will also be created if not already present under `logs`.
 
-*Example*:
+-   A new folder named `logs` will be created at the current working directory if not already exist.
+-   `debug.log` & `error.log` file will also be created if not already present under `logs`.
+
+_Example_:
 
 ```python
 from markkk.logger import logger
@@ -41,10 +42,10 @@ logger.critical("This is a critical error message")
 
 ### Sub-module: `time`
 
-- `timeit` (this is a decorator for your function)
-- `timeitprint` (this is a decorator for your function)
+-   `timeit` (this is a decorator for your function)
+-   `timeitprint` (this is a decorator for your function)
 
-*Example*:
+_Example_:
 
 ```python
 from markkk.time import timeitprint
@@ -61,7 +62,7 @@ if __name__ == "__main__":
     tictok()
 ```
 
-*Console output*:
+_Console output_:
 
 ```
 ====== Func 'tictok' finished in 0.3280000000 secs ======
@@ -69,20 +70,20 @@ if __name__ == "__main__":
 
 ### Sub-module: `file`
 
-- `safe_rename`
-- `safe_copy`
-- `safe_move`
+-   `safe_rename`
+-   `safe_copy`
+-   `safe_move`
 
 ### Sub-module: `encoding`
 
-- `is_ascii`
-- `check_non_ascii_index`
-- `is_ascii_only_file`
-- `check_file_by_line`
-- `ensure_no_zh_punctuation`
-- `replace_punc_for_file`
+-   `is_ascii`
+-   `check_non_ascii_index`
+-   `is_ascii_only_file`
+-   `check_file_by_line`
+-   `ensure_no_zh_punctuation`
+-   `replace_punc_for_file`
 
-*Example*:
+_Example_:
 
 ```python
 from markkk.encoding import replace_punc_for_file, is_ascii
@@ -91,21 +92,24 @@ replace_punc_for_file("test.txt")
 is_ascii("。") # this returns false
 ```
 
-
-
 ## Development
 
 ### Install package using local version
-*clone this repo*
+
+_clone this repo_
+
 ```bash
 git clone https://github.com/MarkHershey/python-utils.git
 ```
-*go to project root*
+
+_go to project root_
+
 ```bash
 cd markkk
 ```
 
-*create virtual env for this project*
+_create virtual env for this project_
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
@@ -113,18 +117,20 @@ pip install --upgrade pip setuptools  wheel
 pip install -r requirements.txt
 ```
 
-*install this package in editable mode*
+_install this package in editable mode_
+
 ```bash
 pip install -e .[dev]
 ```
 
 ### Run Unittest
 
-*at project root*
+_at project root_
+
 ```bash
 tox
 ```
 
 ## License
 
-- [MIT License]("LICENSE")
+-   [MIT License]("LICENSE")
